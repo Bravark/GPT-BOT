@@ -119,7 +119,9 @@ function extractQuestions(text) {
         let option_values = option.split("|");
         let id = option_values[0].substring(option_values[0].indexOf(":") + 1).trim();
         let text = option_values[1].substring(option_values[1].indexOf(":") + 1).trim();
-        let isCorrect = option_values[2].substring(option_values[2].indexOf(":") + 1).trim();
+        let _isCorrect = option_values[2].substring(option_values[2].indexOf(":") + 1).trim();
+        let isCorrect = _isCorrect.replace(/[, }]/g, "");
+        console.log(isCorrect)
         question.options.push({ id: id, text: text, isCorrect: isCorrect });
       }
     }
